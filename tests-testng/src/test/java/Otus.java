@@ -15,10 +15,10 @@ public class Otus {
     private org.apache.logging.log4j.Logger logger = LogManager.getLogger(Otus.class);
 
     @BeforeMethod
-    public void startUp() throws InterruptedException {
+    public void startUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        Thread.sleep(3000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         logger.info("Драйвер поднят");
     }
 
@@ -32,7 +32,7 @@ public class Otus {
     public void openPage() throws InterruptedException {
         driver.get("https://otus.ru/");
         logger.info("Сайт открыт");
-        Thread.sleep(3000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         auth();
         enterLk();
         //чистим
@@ -67,7 +67,7 @@ public class Otus {
         //Сохранение
         driver.findElement(By.xpath("//form/div[2]/div/div/button[1]")).submit();
         logger.info("Обновление данных завершено");
-        Thread.sleep(3000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         //открыть в новом браузере
         driver.quit();
         driver = new ChromeDriver();
@@ -91,7 +91,7 @@ public class Otus {
     private void auth() throws InterruptedException {
         String login = "coyihev466@pyrelle.com";
         String password = "Qazwsx123";
-        String locator = "/html/body/div[1]/div/header[2]/div/div[3]/div[1]/button";
+        String locator = "//header[2]/div/div[3]/div/div[1]/button";
         driver.findElement(By.xpath(locator)).click();
         logger.info("Форма авторизации открыта");
         Thread.sleep(3000);
