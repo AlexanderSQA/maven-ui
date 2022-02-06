@@ -13,8 +13,8 @@ public class MainPage extends AbstractPage {
     private By userMenu = By.xpath("//div[3]/div/div/div[1]/div[3]/p");
     private By userCabinet = By.xpath("//div[3]/div/div/div[1]/div[2]/a[2]");
     private By aboutMyself = By.xpath("/html/body/div[1]/div/div[2]/div/div/div/a[3]");
-    String login = System.getProperty("login");     //"coyihev466@pyrelle.com";
-    String password = System.getProperty("pass");   //"Qazwsx123";
+    String login = System.getProperty("login");
+    String password = System.getProperty("pass");
 
 
     public MainPage(WebDriver driver) {
